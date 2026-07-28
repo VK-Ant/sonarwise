@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/VK-Ant/sightrag/main/assets/sonarwise_ai.png" alt="sonarwise" width="800"/>
+  <img src="https://raw.githubusercontent.com/VK-Ant/sonarwise/main/assets/sonarwise_ai.png" alt="sonarwise" width="800"/>
 </p>
 
 <h1 align="center">sonarwise</h1>
