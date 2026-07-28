@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sonarwise"
-version = "0.1.0"
+version = "0.1.2"
 description = "Pluggable audio perception engine. Hear. Search. Retrieve."
 readme = "README.md"
-license = {text = "MIT"}
+license = {text = "Apache 2.0"}
 requires-python = ">=3.9"
 authors = [
-    {name = "VK-Ant (Venkatkumar Rajan)", email = "venkatkumarrajan@gmail.com"}
+    {name = "Venkatkumar Rajan", email = "venkatkumarr.vk99@gmail.com"}
 ]
 keywords = [
     "audio", "speech", "retrieval", "RAG", "transcription",

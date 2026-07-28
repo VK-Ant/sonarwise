@@ -169,22 +169,10 @@ sonarwise is part of the VK-Ant AI perception ecosystem:
 | Library | Purpose | Tagline |
 |---------|---------|---------|
 | [SightRAG](https://github.com/VK-Ant/SightRAG) | Visual perception | See. Search. Retrieve. |
-| **sonarwise** | Audio perception | Hear. Search. Retrieve. |
+| [sonarwise](https://github.com/VK-Ant/sonarwise)| Audio perception | Hear. Search. Retrieve. |
 | [adaptive-intelligence](https://github.com/VK-Ant/adaptive-intelligence) | Reasoning & memory | Learn. Remember. Adapt. |
 | [llmevalkit](https://github.com/VK-Ant/llmevalkit) | Evaluation | Evaluate. Score. Improve. |
 
-```python
-from sightrag import SightRAG
-from sonarwise import SonarWise
-from adaptive_intelligence import AdaptiveRAG
-
-brain = AdaptiveRAG()
-brain.register_source("visual", SightRAG())
-brain.register_source("audio", SonarWise())
-
-# One query hits both eyes and ears
-results = brain.query("when did machine 3 start failing?")
-```
 ## License
 
 Apache 2.0
