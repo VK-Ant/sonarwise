@@ -1,0 +1,84 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sonarwise"
+version = "0.1.0"
+description = "Pluggable audio perception engine. Hear. Search. Retrieve."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "VK-Ant (Venkatkumar Rajan)", email = "venkatkumarrajan@gmail.com"}
+]
+keywords = [
+    "audio", "speech", "retrieval", "RAG", "transcription",
+    "diarization", "speaker-recognition", "audio-events",
+    "whisper", "CLAP", "perception", "search", "embeddings",
+    "voice-activity-detection", "sound-classification"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "numpy>=1.24.0",
+    "tqdm>=4.65.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+whisper = ["openai-whisper>=20231117"]
+faster-whisper = ["faster-whisper>=1.0.0"]
+clap = ["transformers>=4.30.0", "torch>=2.0.0", "torchaudio>=2.0.0"]
+diarization = ["pyannote.audio>=3.1.0", "torch>=2.0.0"]
+speaker = ["speechbrain>=1.0.0", "torch>=2.0.0"]
+events = ["torch>=2.0.0", "torchaudio>=2.0.0"]
+live = ["sounddevice>=0.4.6"]
+vad = ["silero-vad>=5.0.0", "torch>=2.0.0"]
+all = [
+    "openai-whisper>=20231117",
+    "transformers>=4.30.0",
+    "torch>=2.0.0",
+    "torchaudio>=2.0.0",
+    "pyannote.audio>=3.1.0",
+    "speechbrain>=1.0.0",
+    "sounddevice>=0.4.6",
+    "silero-vad>=5.0.0",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+sonarwise = "sonarwise.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/VK-Ant/sonarwise"
+Documentation = "https://github.com/VK-Ant/sonarwise#readme"
+Repository = "https://github.com/VK-Ant/sonarwise"
+Issues = "https://github.com/VK-Ant/sonarwise/issues"
+
+[tool.setuptools.packages.find]
+include = ["sonarwise*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

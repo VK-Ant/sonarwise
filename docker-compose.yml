@@ -1,0 +1,104 @@
+version: "3.8"
+
+services:
+  # ─── CPU-only runtime (default) ──────────────────────────────
+  sonarwise:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sonarwise
+    volumes:
+      - ./data:/data
+      - ./sonarwise.db:/app/sonarwise.db
+    environment:
+      - SONARWISE_DB=/app/sonarwise.db
+      - SONARWISE_DEVICE=cpu
+    entrypoint: ["sonarwise"]
+    command: ["--help"]
+
+  # ─── GPU runtime (NVIDIA) ───────────────────────────────────
+  sonarwise-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    container_name: sonarwise-gpu
+    volumes:
+      - ./data:/data
+      - ./sonarwise.db:/app/sonarwise.db
+    environment:
+      - SONARWISE_DB=/app/sonarwise.db
+      - SONARWISE_DEVICE=cuda
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    profiles:
+      - gpu
+
+  # ─── Run tests ──────────────────────────────────────────────
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sonarwise-test
+    command: ["python", "-m", "pytest", "tests/", "-v", "--tb=short"]
+    entrypoint: []
+    profiles:
+      - test
+
+  # ─── Run smoke tests only ──────────────────────────────────
+  smoke-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sonarwise-smoke
+    command: ["python", "-m", "pytest", "tests/test_smoke.py", "-v", "--tb=short"]
+    entrypoint: []
+    profiles:
+      - test
+
+  # ─── Run unit tests only ───────────────────────────────────
+  unit-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sonarwise-unit
+    command: ["python", "-m", "pytest", "tests/test_core.py", "-v", "--tb=short"]
+    entrypoint: []
+    profiles:
+      - test
+
+  # ─── Index audio files ─────────────────────────────────────
+  index:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sonarwise-index
+    volumes:
+      - ./data:/data
+      - ./sonarwise.db:/app/sonarwise.db
+    entrypoint: ["sonarwise"]
+    command: ["index", "/data/", "--recursive"]
+    profiles:
+      - index
+
+  # ─── Live listener (microphone via PulseAudio) ─────────────
+  live:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sonarwise-live
+    volumes:
+      - ./data:/data
+      - ./sonarwise.db:/app/sonarwise.db
+      - /run/user/1000/pulse:/run/user/1000/pulse
+    environment:
+      - PULSE_SERVER=unix:/run/user/1000/pulse/native
+      - SONARWISE_DB=/app/sonarwise.db
+    entrypoint: ["sonarwise"]
+    command: ["listen", "--source", "microphone"]
+    profiles:
+      - live

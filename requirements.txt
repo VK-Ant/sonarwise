@@ -1,0 +1,29 @@
+# sonarwise v0.1.0 — requirements
+# Install: pip install -r requirements.txt
+
+# Core
+numpy>=1.24.0
+tqdm>=4.65.0
+pyyaml>=6.0
+
+# Transcription (Whisper)
+openai-whisper>=20231117
+
+# Audio Embeddings (CLAP)
+transformers>=4.30.0
+torch>=2.0.0
+torchaudio>=2.0.0
+
+# Speaker Diarization
+pyannote.audio>=3.1.0
+
+# Speaker Identification
+speechbrain>=1.0.0
+
+# Live Audio Capture
+sounddevice>=0.4.6
+
+# Dev / Testing
+pytest>=7.0
+pytest-cov>=4.0
+ruff>=0.1.0

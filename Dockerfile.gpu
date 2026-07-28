@@ -1,0 +1,38 @@
+FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
+
+LABEL maintainer="VK-Ant (Venkatkumar Rajan)"
+LABEL description="sonarwise GPU — Pluggable audio perception engine with CUDA support."
+LABEL version="0.1.0"
+
+# Prevent timezone prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# System dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 \
+    python3-pip \
+    python3-dev \
+    ffmpeg \
+    libsndfile1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Symlink python
+RUN ln -sf /usr/bin/python3 /usr/bin/python
+
+WORKDIR /app
+
+# Copy project
+COPY pyproject.toml README.md LICENSE ./
+COPY sonarwise/ sonarwise/
+COPY tests/ tests/
+COPY assets/ assets/
+
+# Install with all ML dependencies
+RUN pip install --no-cache-dir --break-system-packages ".[all,dev]"
+
+RUN mkdir -p /data
+
+VOLUME ["/data"]
+
+ENTRYPOINT ["sonarwise"]
+CMD ["--help"]
