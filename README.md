@@ -194,5 +194,4 @@ Apache 2.0
 Built by **Venkatkumar Rajan**
 
 - GitHub: https://github.com/VK-Ant
-- LinkedIn: https://linkedin.com/in/vk-ant
 - Portfolio: https://vk-ant.github.io/Venkatkumar
