@@ -185,7 +185,14 @@ brain.register_source("audio", SonarWise())
 # One query hits both eyes and ears
 results = brain.query("when did machine 3 start failing?")
 ```
-
 ## License
 
-Apache 2.0 License. Built by [Venkatkumar Rajan](https://github.com/VK-Ant).
+Apache 2.0
+
+## Author
+
+Built by **Venkatkumar Rajan**
+
+- GitHub: https://github.com/VK-Ant
+- LinkedIn: https://linkedin.com/in/vk-ant
+- Portfolio: https://vk-ant.github.io/Venkatkumar
