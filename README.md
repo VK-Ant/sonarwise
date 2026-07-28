@@ -6,7 +6,7 @@
 <p align="center"><b>Pluggable audio perception engine. Hear. Search. Retrieve.</b></p>
 
 <p align="center">
-  <a href="https://pypi.org/project/sonarwise/"><img src="https://img.shields.io/pypi/v/sonarwise?color=orange" alt="PyPI"/></a>
+  <a href="https://pypi.org/project/sonarwise"><img src="https://img.shields.io/pypi/v/sonarwise?color=blue" alt="PyPI"/></a>
   <a href="https://github.com/VK-Ant/sonarwise/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue" alt="License"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.9+-green" alt="Python"></a>
 </p>
