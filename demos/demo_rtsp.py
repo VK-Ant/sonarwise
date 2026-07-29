@@ -3,7 +3,7 @@ sonarwise — RTSP Audio Device Demo
 For IP cameras, security systems, and audio-enabled devices.
 
 This demo shows how to use sonarwise with:
-- RTSP audio streams (IP cameras like Axis, Hikvision, Dahua)
+- RTSP audio streams 
 - PipeWire / PulseAudio system audio
 - USB microphones
 - Any audio input device
@@ -181,15 +181,6 @@ def print_rtsp_guide():
         send_notification(event)
 
     sw.listen()
-
-  ───────────────────────────────
-  Supported devices:
-    - Axis cameras (AUDIO_IN via RTSP)
-    - Hikvision DVR/NVR
-    - Dahua cameras
-    - Any RTSP-capable audio source
-    - PipeWire / PulseAudio (Linux system audio)
-    - USB microphones (via sounddevice)
   """)
 
 
