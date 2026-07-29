@@ -120,10 +120,10 @@ def print_rtsp_guide():
 
     print("""  sonarwise supports RTSP audio via custom listeners.
 
-  Example: Axis Camera (AUDIO_IN)
+  Example:  Camera (AUDIO_IN)
   ───────────────────────────────
   RTSP URL format:
-    rtsp://username:password@192.168.1.100/axis-media/media.amp
+    rtsp://username:password@192.168.1.100/media/media.amp
 
   With sonarwise + ffmpeg listener:
 
